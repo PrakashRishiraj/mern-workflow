@@ -371,5 +371,5 @@ export {
     updateTaskChecklist,
     updateTaskStatus,
     getDashboardData,
-    getUserDashboardData
+    getUserDashboardData,
 };
