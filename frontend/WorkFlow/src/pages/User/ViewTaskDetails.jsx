@@ -6,6 +6,7 @@ import DashboardLayout from "../../components/layouts/DashboardLayout";
 import moment from "moment";
 import { LuSquareArrowOutUpRight } from "react-icons/lu";
 import { FaCheckCircle, FaClock, FaHourglass } from "react-icons/fa";
+import CommentInput from "../../components/Inputs/CommentInput";
 
 const ViewTaskDetails = () => {
   const { id } = useParams();
@@ -229,6 +230,46 @@ const ViewTaskDetails = () => {
                 </div>
               </div>
             )}
+
+            {/* Comments Section */}
+<div className="bg-linear-to-br from-slate-900/80 to-indigo-900/20 p-6 rounded-xl border border-indigo-500/15">
+  <label className="block text-xs font-bold text-slate-300 uppercase tracking-widest mb-4">
+    💬 Comments
+  </label>
+
+  {/* Scrollable Comments Box */}
+  <div className="space-y-4 mb-4 max-h-64 overflow-y-auto pr-2 custom-scrollbar">
+    {task?.comments?.map((comment, idx) => (
+      <div
+        key={idx}
+        className="p-4 rounded-lg border border-slate-700/50 bg-slate-900/40"
+      >
+        <div className="flex items-center gap-3 mb-2">
+          <img
+            src={
+              comment.user?.profileImageUrl ||
+              "https://img.lovepik.com/png/20231027/Dark-gray-simple-avatar-grey-silhouette-placeholder_369196_wh860.png"
+            }
+            className="w-8 h-8 rounded-full border border-indigo-400/40"
+          />
+          <p className="text-sm text-slate-300 font-semibold">
+            {comment.user?.name || "Unknown User"}
+          </p>
+        </div>
+        <p className="text-slate-200 text-sm">{comment.text}</p>
+        <p className="text-xs text-slate-500 mt-1">
+          {moment(comment.createdAt).fromNow()}
+        </p>
+      </div>
+    ))}
+  </div>
+
+  {/* Add Comment Input */}
+  <CommentInput taskId={id} setTask={setTask} />
+</div>
+
+
+
           </div>
         )}
       </div>

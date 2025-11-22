@@ -1,6 +1,6 @@
 import express from 'express';
 import { protect, adminOnly, projectLeaderOnly } from '../middlewares/authMiddleware.js';
-import { createTask, deleteTask, getDashboardData, getTaskById, getTasks, getUserDashboardData, updateTask, updateTaskChecklist, updateTaskStatus } from '../controllers/taskController.js';
+import { addComment, createTask, deleteTask, getDashboardData, getTaskById, getTasks, getUserDashboardData, updateTask, updateTaskChecklist, updateTaskStatus } from '../controllers/taskController.js';
 
 const router = express.Router();
 
@@ -14,5 +14,7 @@ router.put("/:id", protect, updateTask); //Update task (admin only)
 router.delete("/:id", protect, deleteTask); //Delete task (admin & project-leader only)
 router.put("/:id/status", protect, updateTaskStatus); //Update task status
 router.put("/:id/todo", protect, updateTaskChecklist); //Update task checklist
+
+router.post("/:id/comment", protect, addComment);
 
 export default router;

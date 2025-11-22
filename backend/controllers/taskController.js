@@ -1,4 +1,5 @@
 import Task from "../models/Task.js";
+import User from "../models/User.js";
 
 const getTasks = async (req, res) => {
     try {
@@ -68,7 +69,10 @@ const getTasks = async (req, res) => {
 
 const getTaskById = async (req, res) => {
     try {
-        const task = await Task.findById(req.params.id).populate('assignedTo', 'name email profileImageUrl');
+        const task = await Task.findById(req.params.id)
+  .populate('assignedTo', 'name email profileImageUrl')
+  .populate('comments.user', 'name email profileImageUrl');
+
 
         if (!task) {
             return res.status(404).json({ message: 'Task not found' });
@@ -360,6 +364,44 @@ const getUserDashboardData = async (req, res) => {
         console.error('Error fetching user dashboard data:', error);
         res.status(500).json({ message: 'Server error' });
     }
+};
+
+// controllers/taskController.js
+
+export const addComment = async (req, res) => {
+  try {
+    const { text } = req.body;
+    const userId = req.user?.id || req.body.user; // depends on your auth
+
+    if (!text) {
+      return res.status(400).json({ message: "Comment text is required" });
+    }
+
+    const task = await Task.findById(req.params.id);
+    if (!task) {
+      return res.status(404).json({ message: "Task not found" });
+    }
+
+    task.comments.push({
+      user: userId,
+      text,
+      createdAt: new Date(),
+    });
+
+    await task.save();
+
+    const populatedTask = await Task.findById(req.params.id)
+      .populate("comments.user", "name email profileImageUrl");
+
+    res.status(200).json({
+      message: "Comment added successfully",
+      task: populatedTask,
+    });
+
+  } catch (error) {
+    console.error("Error adding comment:", error);
+    res.status(500).json({ message: "Server error" });
+  }
 };
 
 export {
