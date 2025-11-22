@@ -179,7 +179,7 @@ const ViewTaskDetails = () => {
                       title={user.fullName || user.name}
                     >
                       <img
-                        src={user.profileImageUrl || "/default-avatar.png"}
+                        src={user.profileImageUrl || "https://img.lovepik.com/png/20231027/Dark-gray-simple-avatar-grey-silhouette-placeholder_369196_wh860.png"}
                         alt={user.fullName || user.name}
                         className="w-10 h-10 rounded-full border-2 border-indigo-500/50 hover:border-indigo-400 hover:scale-110 transition-all shadow-lg"
                       />

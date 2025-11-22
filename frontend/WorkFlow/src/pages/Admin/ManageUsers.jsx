@@ -55,7 +55,7 @@ const ManageUsers = () => {
         {/* Header */}
         <div className="flex flex-col sm:flex-row justify-between items-center mb-8">
           <h2 className="text-3xl font-semibold bg-linear-to-r from-indigo-400 to-violet-500 bg-clip-text text-transparent drop-shadow-md">
-            Team Members
+            All Users
           </h2>
 
           <button
@@ -81,8 +81,8 @@ const ManageUsers = () => {
                 <div className="w-16 h-16 rounded-full bg-slate-700/50 flex items-center justify-center mx-auto mb-4">
                   <FaUserAlt className="w-8 h-8 text-slate-400" />
                 </div>
-                <p className="text-lg font-semibold text-slate-200">No team members found.</p>
-                <p className="text-sm text-slate-400 mt-2">Start by adding members to your team.</p>
+                <p className="text-lg font-semibold text-slate-200">No users found.</p>
+                <p className="text-sm text-slate-400 mt-2"></p>
               </div>
             </div>
           )}

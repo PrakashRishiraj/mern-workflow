@@ -52,6 +52,7 @@ const TaskSchema = new mongoose.Schema({
         type: Number,
         default: 0
     },
+    
 }, { timestamps: true });
 
 const Task = mongoose.model('Task', TaskSchema);

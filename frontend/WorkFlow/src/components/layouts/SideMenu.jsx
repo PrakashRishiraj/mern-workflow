@@ -41,16 +41,11 @@ const SideMenu = ({ activeMenu }) => {
       {/* --- Profile Section --- */}
       <div className="flex flex-col items-center mb-8">
         <img
-          src={user?.profileImageUrl || "https://ui-avatars.com/api/?name=User"}
+          src={user?.profileImageUrl || "https://img.lovepik.com/png/20231027/Dark-gray-simple-avatar-grey-silhouette-placeholder_369196_wh860.png"}
           alt="Profile"
           className="w-20 h-20 rounded-full border-2 border-indigo-500 object-cover shadow-md"
         />
         <div className="text-center mt-3">
-          {user?.role && (
-            <span className="text-xs uppercase tracking-wide text-indigo-400 font-semibold">
-              {user.role}
-            </span>
-          )}
           <h5 className="text-lg font-semibold text-slate-100 mt-1">
             {user?.name || "User"}
           </h5>

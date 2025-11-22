@@ -168,7 +168,7 @@ const SelectUsers = ({ selectedUsers, setSelectedUsers }) => {
                         <div className="flex items-center gap-3 flex-1">
                           <div className="relative">
                             <img
-                              src={user.profileImageUrl}
+                              src={user.profileImageUrl || "https://img.lovepik.com/png/20231027/Dark-gray-simple-avatar-grey-silhouette-placeholder_369196_wh860.png"}
                               alt={user.name}
                               className="w-9 h-9 rounded-full border border-slate-500/50"
                             />
@@ -225,7 +225,7 @@ const SelectUsers = ({ selectedUsers, setSelectedUsers }) => {
                       >
                         <div className="flex items-center gap-3 flex-1">
                           <img
-                            src={user.profileImageUrl}
+                            src={user.profileImageUrl || "https://img.lovepik.com/png/20231027/Dark-gray-simple-avatar-grey-silhouette-placeholder_369196_wh860.png"}
                             alt={user.name}
                             className="w-9 h-9 rounded-full border border-slate-500/50"
                           />
